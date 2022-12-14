@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 export const createTokens = (email) => {
   //  use unique in place of email
   const accessToken = jwt.sign({ email: email }, process.env.accessSecret, {
-    expiresIn: "1s",
+    expiresIn: "2d",
   }); // for testing chenge it to 15m
   const refreshToken = jwt.sign({ email: email }, process.env.refreshSecret, {
     expiresIn: "600m",

@@ -9,6 +9,8 @@ import RequireAuth from "./features/auth/RequireAuth";
 import Posts from "./pages/Posts";
 import Post from "./pages/Post";
 import PostLayout from "./layouts/PostLayout";
+import CreatePost from "./pages/CreatePost";
+import Error404 from "./pages/Error404";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -24,9 +26,11 @@ function App() {
           <Route element={<PostLayout />}>
             <Route path="/posts" element={<Posts />} />
             <Route path="/posts/:id" element={<Post />} />
+            <Route path="/posts/share-art" element={<CreatePost />} />
           </Route>
         </Route>
       </Route>
+      <Route path="*" element={<Error404 />} />
     </Routes>
   );
 }

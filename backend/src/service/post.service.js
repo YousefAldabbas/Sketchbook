@@ -7,8 +7,8 @@ export const createPost = async (req) => {
     const post = await PostModel.create({
       content,
       author: req.user._id,
-    }).populate("author","username");
-
+    })
+    // .populate("author","username");
     return post;
   } catch (error) {
     throw new Error(error);
@@ -42,10 +42,12 @@ export const deletePost = async (req) => {
     const post = await PostModel.findOne({
       _id: id,
       author: user._id,
-    }).populate("author","username");
+    })
+
     if (!post) {
       throw new Error("User not allowed to make changes");
     }
+    post.delete()
     return true;
   } catch (error) {
     throw new Error(error);
